@@ -1,15 +1,9 @@
 import csv
+import os
 import requests
 from datetime import datetime
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom.minidom import parseString
-import os
-
-# Ensure docs directory exists
-os.makedirs('docs', exist_ok=True)
-
-with open('docs/feed.xml', 'w', encoding='utf-8') as f:
-    f.write(rss_content)
 
 CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSE5yJ6z240_i34nXdBc1t-avF6Jct4YyeAhHcwyP-nzM4FPM_4h6_58SKsG1oaxXTUNvT-qD-Arh5X/pub?gid=0&single=true&output=csv"
 
@@ -38,5 +32,7 @@ def build_rss(csv_lines):
 if __name__ == "__main__":
     csv_lines = fetch_csv()
     rss_content = build_rss(csv_lines)
+
+    os.makedirs('docs', exist_ok=True)
     with open('docs/feed.xml', 'w', encoding='utf-8') as f:
         f.write(rss_content)
