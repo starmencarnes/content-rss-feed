@@ -57,11 +57,15 @@ def build_rss(csv_lines):
             pub_date = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
         SubElement(item, 'pubDate').text = pub_date
 
-        # GUID (based on URL or title fallback)
-        guid_val = row.get('URL', '').strip() or row.get('Title', 'No Title')
+        # GUID (based on URL + publish date to ensure uniqueness per campaign)
+        url_part = row.get('URL', '').strip() or 'no-url'
+        date_part = date_str.replace('/', '-') if date_str else datetime.now().strftime('%Y-%m-%d')
+        guid_val = f"{url_part}-{date_part}"
+
         guid = SubElement(item, 'guid')
         guid.text = guid_val
         guid.set('isPermaLink', 'false')
+
 
     return parseString(tostring(rss)).toprettyxml(indent="  ")
 
