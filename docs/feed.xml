@@ -5,10 +5,13 @@
     <link>https://yourusername.github.io/csv-to-rss/feed.xml</link>
     <description>Auto-generated RSS feed from a CSV</description>
     <item>
-      <title>No Title</title>
-      <link/>
-      <description/>
-      <pubDate>Tue, 08 Apr 2025 18:15:37 +0000</pubDate>
+      <title>This is a title</title>
+      <link>6amcity.com</link>
+      <description>&lt;p&gt;This is &lt;i&gt;styled&lt;/i&gt; body copy.
+&lt;img src='https://ad.broadstreetads.com/display/1020804' alt='Image'/&gt;
+&lt;a href='6amcity.com'&gt;Click this&lt;/a&gt;</description>
+      <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">6amcity.com</guid>
     </item>
   </channel>
 </rss>
