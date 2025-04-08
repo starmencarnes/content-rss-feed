@@ -18,9 +18,9 @@ def build_rss(csv_lines):
     channel = SubElement(rss, 'channel')
 
     # Channel information
-    SubElement(channel, 'title').text = "My CSV RSS Feed"
-    SubElement(channel, 'link').text = "https://yourusername.github.io/csv-to-rss/feed.xml"
-    SubElement(channel, 'description').text = "Auto-generated RSS feed from a CSV"
+    SubElement(channel, 'title').text = "6AM City - National Content Feed"
+    SubElement(channel, 'link').text = "https://starmencarnes.github.io/content-rss-feed/feed.xml"
+    SubElement(channel, 'description').text = "RSS feed housing daily national ad copy designed for site ingestion"
 
     for row in reader:
         item = SubElement(channel, 'item')
