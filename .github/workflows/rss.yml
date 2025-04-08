@@ -2,10 +2,9 @@ name: Generate RSS
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 */4 * * *'  # every 4 hours
   workflow_dispatch:
 
-# ADD THIS:
 permissions:
   contents: write
 
