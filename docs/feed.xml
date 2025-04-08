@@ -1,15 +1,15 @@
 <?xml version="1.0" ?>
 <rss version="2.0">
   <channel>
-    <title>My CSV RSS Feed</title>
-    <link>https://yourusername.github.io/csv-to-rss/feed.xml</link>
-    <description>Auto-generated RSS feed from a CSV</description>
+    <title>6AM City - National Content Feed</title>
+    <link>https://starmencarnes.github.io/content-rss-feed/feed.xml</link>
+    <description>RSS feed housing daily national ad copy designed for site ingestion</description>
     <item>
       <title>This is a title</title>
       <link>6amcity.com</link>
-      <description>&lt;p&gt;This is &lt;i&gt;styled&lt;/i&gt; body copy.
-&lt;img src='https://ad.broadstreetads.com/display/1020804' alt='Image'/&gt;
-&lt;a href='6amcity.com'&gt;Click this&lt;/a&gt;</description>
+      <description>&lt;![CDATA[&lt;p&gt;This is &lt;i&gt;styled&lt;/i&gt; body copy.]]&gt;</description>
+      <image>https://ad.broadstreetads.com/display/1020804</image>
+      <cta>Click this</cta>
       <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">6amcity.com</guid>
     </item>
