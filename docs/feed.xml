@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+  <channel>
+    <title>My CSV RSS Feed</title>
+    <link>https://yourusername.github.io/csv-to-rss/feed.xml</link>
+    <description>Auto-generated RSS feed from a CSV</description>
+    <item>
+      <title>No Title</title>
+      <link/>
+      <description/>
+      <pubDate>Tue, 08 Apr 2025 18:15:37 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
