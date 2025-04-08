@@ -17,7 +17,6 @@ def build_rss(csv_lines):
     rss = Element('rss', version='2.0')
     channel = SubElement(rss, 'channel')
 
-    # Channel information
     SubElement(channel, 'title').text = "6AM City - National Content Feed"
     SubElement(channel, 'link').text = "https://starmencarnes.github.io/content-rss-feed/feed.xml"
     SubElement(channel, 'description').text = "RSS feed housing daily national ad copy designed for site ingestion"
@@ -31,29 +30,25 @@ def build_rss(csv_lines):
         # URL goes into <link>
         SubElement(item, 'link').text = row.get('URL', '')
 
-        # Build the description from Body Copy and Image only
-        description_parts = []
-
-        # Body Copy
+        # Description (HTML-wrapped in CDATA)
         body_copy = row.get('Body Copy', '')
         if body_copy:
-            description_parts.append(body_copy)
+            description_elem = SubElement(item, 'description')
+            description_elem.text = f"<![CDATA[{body_copy}]]>"
 
-        # Image: added as an HTML <img> element if available
+        # Image pulled out into its own <image> element
         image_url = row.get('Image', '')
         if image_url:
-            description_parts.append(f"<img src='{image_url}' alt='Image'/>")
+            image_elem = SubElement(item, 'image')
+            image_elem.text = image_url
 
-        full_description = "\n".join(description_parts)
-        SubElement(item, 'description').text = full_description
-
-        # Add the call-to-action (CTA) text in a separate <cta> element
+        # CTA in its own tag
         cta_text = row.get('CTA', '')
         if cta_text:
             cta_elem = SubElement(item, 'cta')
             cta_elem.text = cta_text
 
-        # Parse the publish date (expected format: MM/DD/YYYY)
+        # Publish Date (MM/DD/YYYY)
         date_str = row.get('Publish Date', '')
         try:
             dt = datetime.strptime(date_str, '%m/%d/%Y')
@@ -62,5 +57,18 @@ def build_rss(csv_lines):
             pub_date = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
         SubElement(item, 'pubDate').text = pub_date
 
-        # Add a GUID element so feed readers can uniquely identify each item
-        guid
+        # GUID (based on URL or title fallback)
+        guid_val = row.get('URL', '').strip() or row.get('Title', 'No Title')
+        guid = SubElement(item, 'guid')
+        guid.text = guid_val
+        guid.set('isPermaLink', 'false')
+
+    return parseString(tostring(rss)).toprettyxml(indent="  ")
+
+if __name__ == "__main__":
+    csv_lines = fetch_csv()
+    rss_content = build_rss(csv_lines)
+
+    os.makedirs("docs", exist_ok=True)
+    with open("docs/feed.xml", "w", encoding="utf-8") as f:
+        f.write(rss_content)
