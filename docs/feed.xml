@@ -13,5 +13,14 @@
       <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">6amcity.com-04-08-2025</guid>
     </item>
+    <item>
+      <title>This is a new title</title>
+      <link>advertise.6amcity.com</link>
+      <description>&lt;![CDATA[&lt;p&gt;Better body copy&lt;/p&gt;]]&gt;</description>
+      <image>https://ad.broadstreetads.com/display/1020804</image>
+      <cta>Buy this</cta>
+      <pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">advertise.6amcity.com-04-18-2025</guid>
+    </item>
   </channel>
 </rss>
