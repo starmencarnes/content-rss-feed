@@ -30,11 +30,13 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add docs/feed.xml docs/email.html
+          git add docs/feed.xml
+          if [ -f docs/email.html ]; then git add docs/email.html; fi
           if ! git diff --cached --quiet; then
             git commit -m "Update RSS feed and HTML"
             git push
           else
             echo "No changes to commit"
           fi
+
 
