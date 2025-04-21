@@ -39,8 +39,10 @@ def build_rss(csv_lines):
         # Image pulled out into its own <image> element
         image_url = row.get('Image', '')
         if image_url:
-            image_elem = SubElement(item, 'image')
-            image_elem.text = image_url
+            enclosure = SubElement(item, 'enclosure')
+            enclosure.set('url', image_url)
+            enclosure.set('type', 'image/png')  # or image/png if that’s what you use
+
 
         # CTA in its own tag
         cta_text = row.get('CTA', '')
